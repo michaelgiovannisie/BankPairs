@@ -27,15 +27,14 @@ public class InvestmentAccount extends Account {
         // TODO: Implement method to apply interest to the balance
         // New balance = current balance + (current balance * interest rate)
         // Note: Interest applies even to negative balances
-        this.balance += (this.balance * this.interestRate) ;
+        double interestAmount = getBalance() * interestRate;
+        setBalance(getBalance() + interestAmount);
     }
 
     @Override
     public void debit(Double amount) {
         // TODO: Implement debit method
         // Investment accounts do NOT have overdraft protection - allow balance to go negative
-        if(amount > 0 && amount < this.balance) {
-            this.balance -= balance;
-        }
+        setBalance(getBalance()-amount);
     }
 }

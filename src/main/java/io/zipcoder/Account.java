@@ -7,7 +7,7 @@ public abstract class Account {
     private Double balance;
     private String accountNumber;
     // TODO: Add a field to track transactions
-    private ArrayList<Transaction> transactions;
+    private ArrayList<String> transactions;
 
     public Account(Object accountHolder, Double balance, String accountNumber) {
         // TODO: Implement constructor
@@ -29,11 +29,7 @@ public abstract class Account {
 
     public void setBalance(Double balance) {
         // TODO: Implement setter
-        if(balance >= 0) {
-            this.balance = balance;
-        } else {
-            System.out.println("Invalid Input.");
-        }
+        this.balance = balance;
     }
 
     public String getAccountNumber() {
@@ -44,20 +40,25 @@ public abstract class Account {
     public void credit(Double amount) {
         // TODO: Implement credit method (add money to account)
         // TODO: Record this transaction
-        if(amount >= 0) {
+        if(amount > 0) {
             this.balance += amount;
-            this.transactions.add(new Transaction(amount, "Deposit"));
+            this.transactions.add("Deposit" + amount);
         }
     }
 
-    public abstract void debit(Double amount);
+    public void debit(Double amount){
+        if(amount > 0) {
+            this.balance -= amount;
+            this.transactions.add("Withdraw" + amount);
+        }
+    }
         // TODO: Implement debit method (remove money from account)
         // TODO: Record this transaction
 
 
-    public ArrayList<Transactions> getTransactions() {
+    public Object getTransactions() {
         // TODO: Implement method to return transaction history
-        return transaction;
+        return transactions;
     }
 }
 
