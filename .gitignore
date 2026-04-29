@@ -104,3 +104,8 @@ target/*
 .project
 .classpath
 .settings
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
