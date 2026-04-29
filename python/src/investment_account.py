@@ -22,7 +22,8 @@ class InvestmentAccount(Account):
         # TODO: Implement method to apply interest to the balance
         # New balance = current balance + (current balance * interest rate)
         # Note: Interest applies even to negative balances
-        self.balance += (self.balance * self.interest_rate)
+        interest_amount = self.get_balance() * self.interest_rate
+        self.set_balance(self.get_balance() + interest_amount)
 
     def debit(self, amount):
         # TODO: Implement debit method

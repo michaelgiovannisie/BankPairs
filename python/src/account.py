@@ -37,7 +37,7 @@ class Account(ABC):
         else: 
             self.balance += amount
             self.transactions.append(amount)
-
+    
     def debit(self, amount):
         # TODO: Implement debit method (remove money from account)
         # TODO: Record this transaction
