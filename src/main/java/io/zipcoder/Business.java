@@ -5,14 +5,20 @@ public class Business {
 
     public Business(String businessName) {
         // TODO: Implement constructor
+        this.businessName = businessName;
     }
 
     public String getBusinessName() {
         // TODO: Implement getter
-        return null;
+        return businessName;
     }
 
     public void setBusinessName(String businessName) {
         // TODO: Implement setter
+        if(businessName != null && !businessName.isEmpty()) {
+            this.businessName = businessName;
+        } else {
+            System.out.println("Invalid input");
+        }
     }
 }

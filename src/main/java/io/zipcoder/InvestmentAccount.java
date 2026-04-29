@@ -6,26 +6,36 @@ public class InvestmentAccount extends Account {
     public InvestmentAccount(Object accountHolder, Double balance, String accountNumber, Double interestRate) {
         super(accountHolder, balance, accountNumber);
         // TODO: Implement constructor
+        this.interestRate = interestRate;
     }
 
     public Double getInterestRate() {
         // TODO: Implement getter
-        return null;
+        return interestRate;
     }
 
     public void setInterestRate(Double interestRate) {
         // TODO: Implement setter
+        if(interestRate > 0) {
+            this.interestRate = interestRate;
+        } else {
+            System.out.println("Invalid Input.");
+        }
     }
 
     public void applyInterest() {
         // TODO: Implement method to apply interest to the balance
         // New balance = current balance + (current balance * interest rate)
         // Note: Interest applies even to negative balances
+        this.balance += (this.balance * this.interestRate) ;
     }
 
     @Override
     public void debit(Double amount) {
         // TODO: Implement debit method
         // Investment accounts do NOT have overdraft protection - allow balance to go negative
+        if(amount > 0 && amount < this.balance) {
+            this.balance -= balance;
+        }
     }
 }

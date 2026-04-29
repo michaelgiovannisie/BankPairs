@@ -1,47 +1,63 @@
 package io.zipcoder;
 
+import java.util.ArrayList;
+
 public abstract class Account {
     private Object accountHolder;
     private Double balance;
     private String accountNumber;
     // TODO: Add a field to track transactions
+    private ArrayList<Transaction> transactions;
 
     public Account(Object accountHolder, Double balance, String accountNumber) {
         // TODO: Implement constructor
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+        this.accountNumber = accountNumber;
+        this.transactions = new ArrayList<>();
     }
 
     public Object getAccountHolder() {
         // TODO: Implement getter
-        return null;
+        return accountHolder;
     }
 
     public Double getBalance() {
         // TODO: Implement getter
-        return null;
+        return balance;
     }
 
     public void setBalance(Double balance) {
         // TODO: Implement setter
+        if(balance >= 0) {
+            this.balance = balance;
+        } else {
+            System.out.println("Invalid Input.");
+        }
     }
 
     public String getAccountNumber() {
         // TODO: Implement getter
-        return null;
+        return accountNumber;
     }
 
     public void credit(Double amount) {
         // TODO: Implement credit method (add money to account)
         // TODO: Record this transaction
+        if(amount >= 0) {
+            this.balance += amount;
+            this.transactions.add(new Transaction(amount, "Deposit"));
+        }
     }
 
-    public void debit(Double amount) {
+    public abstract void debit(Double amount);
         // TODO: Implement debit method (remove money from account)
         // TODO: Record this transaction
-    }
 
-    public Object getTransactions() {
+
+    public ArrayList<Transactions> getTransactions() {
         // TODO: Implement method to return transaction history
-        return null;
+        return transaction;
     }
 }
 

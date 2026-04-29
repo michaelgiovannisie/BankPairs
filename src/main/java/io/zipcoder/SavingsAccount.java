@@ -6,15 +6,21 @@ public class SavingsAccount extends Account {
     public SavingsAccount(Object accountHolder, Double balance, String accountNumber, Double interestRate) {
         super(accountHolder, balance, accountNumber);
         // TODO: Implement constructor
+        this.interestRate = interestRate;
     }
 
     public Double getInterestRate() {
         // TODO: Implement getter
-        return null;
+        return interestRate;
     }
 
     public void setInterestRate(Double interestRate) {
         // TODO: Implement setter
+        if(interestRate > 0) {
+            this.interestRate = interestRate;
+        } else {
+            System.out.println("Invalid Input.");
+        }
     }
 
     public void applyInterest() {
